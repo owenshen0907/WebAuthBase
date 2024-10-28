@@ -1,5 +1,4 @@
 // src/components/Login.js
-// src/components/Login.js
 import React, { useState } from 'react';
 import {
     Container,
@@ -19,16 +18,18 @@ function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('/api/login', {
-                username,
-                password,
-            });
+            const apiUrl = `${process.env.REACT_APP_API_BASE_URL}/api/login`;
+            const response = await axios.post(
+                apiUrl,
+                { username, password },
+                { withCredentials: true } // 允许携带凭证（Cookie）
+            );
             if (response.status === 200) {
-                // 登录成功，跳转到指定的网站
-                window.location.href = 'https://your-other-website.com';
+                // 登录成功后，重定向到 A 网站
+                window.location.href = process.env.REACT_APP_REDIRECT_URL;
             }
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('登录失败:', error);
             alert('登录失败，请检查您的用户名和密码。');
         }
     };
