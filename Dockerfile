@@ -1,5 +1,6 @@
 # 使用官方的 Node.js 运行时作为基础镜像
 FROM node:16-alpine
+
 LABEL authors="owen"
 
 # 设置工作目录
