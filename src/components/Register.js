@@ -18,9 +18,11 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('/api/register', {
+            const response = await axios.post('/api/register', { // 使用相对路径
                 username,
                 password,
+            }, {
+                withCredentials: true, // 如果需要发送凭据
             });
             if (response.status === 201) {
                 alert('注册成功，请登录。');
