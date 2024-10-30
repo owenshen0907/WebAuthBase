@@ -3,7 +3,6 @@ FROM node:16-alpine
 
 LABEL authors="owen"
 
-
 # 设置工作目录
 WORKDIR /app
 
