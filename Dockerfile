@@ -1,5 +1,5 @@
 # 使用官方的 Node.js 运行时作为基础镜像
-FROM node:16-alpine
+FROM node:20.18-alpine AS build
 
 LABEL authors="owen"
 
