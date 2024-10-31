@@ -6,9 +6,16 @@ LABEL authors="owen"
 # 设置工作目录
 WORKDIR /app
 
+# 安装 pnpm
+RUN npm install -g pnpm
+
+# 设置 pnpm 使用国内源
+RUN pnpm config set registry https://registry.npmmirror.com
+
 # 安装应用程序的依赖（利用 Docker 缓存）
 COPY package*.json ./
-RUN npm install
+
+RUN pnpm install
 
 # 复制应用程序源代码
 COPY . .
@@ -17,4 +24,4 @@ COPY . .
 EXPOSE 3030
 
 # 启动应用程序
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]
