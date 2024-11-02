@@ -18,7 +18,7 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            const apiUrl = `${process.env.REACT_APP_API_BASE_URL}/api/login`;
+            const apiUrl = `${process.env.REACT_APP_API_BASE_URL}/api/register`;
             const response = await axios.post(
                 apiUrl,
                 {username,password,},
